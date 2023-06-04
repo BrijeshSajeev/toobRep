@@ -9,6 +9,7 @@ public class DemoRestController {
 
     private Coach myCoach;
 
+// (@Autowired) Search the object Coach in th Spring Container
     @Autowired
     DemoRestController(Coach theCoach){
         myCoach=theCoach;
