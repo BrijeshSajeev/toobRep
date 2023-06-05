@@ -2,7 +2,7 @@ package com.brijesh.springCoreDemo.common;
 
 public class SwimCoach implements Coach{
 
-    SwimCoach(){
+    public SwimCoach(){
         System.out.println("Constructor:SwimCoach");
     }
     @Override

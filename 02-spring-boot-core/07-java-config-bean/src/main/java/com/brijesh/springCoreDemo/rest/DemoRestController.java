@@ -17,7 +17,7 @@ public class DemoRestController {
 
 // (@Autowired) Search the object Coach in th Spring Container
     @Autowired
-   public void setCoach(@Qualifier("swimCoach") Coach theCoach){
+   public void setCoach(@Qualifier("newSwimCoach") Coach theCoach){
         System.out.println("Constructor: " +getClass().getSimpleName());
         myCoach=theCoach;
     }
