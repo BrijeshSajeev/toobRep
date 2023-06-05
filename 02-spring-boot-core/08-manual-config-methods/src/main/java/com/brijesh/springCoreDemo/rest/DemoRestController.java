@@ -16,24 +16,13 @@ package com.brijesh.springCoreDemo.rest;
 public class DemoRestController {
 
     private Coach myCoach;
-
-//    Start Up Method
-    @PostConstruct
-    public void myStartupMethod(){
-        System.out.println("In the Startup Method");
-    }
-
-//    Cleanup Method
-    @PreDestroy
-    public void myCleanupMethod(){
-        System.out.println("In the Cleanup Method");
-    }
+    //    Start Up Method
 
 
 
 // (@Autowired) Search the object Coach in th Spring Container
     @Autowired
-   public void setCoach(Coach theCoach){
+   public void setCoach(@Qualifier("cricketCoach") Coach theCoach){
         System.out.println("Constructor: " +getClass().getSimpleName());
         myCoach=theCoach;
 
