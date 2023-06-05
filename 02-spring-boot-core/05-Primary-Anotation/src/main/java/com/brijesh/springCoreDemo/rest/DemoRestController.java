@@ -14,6 +14,7 @@ public class DemoRestController {
 // (@Autowired) Search the object Coach in th Spring Container
     @Autowired
    public void setCoach(Coach theCoach){
+        System.out.println("Constructor: " +getClass().getSimpleName());
         myCoach=theCoach;
     }
     @GetMapping("/dailyworkout")

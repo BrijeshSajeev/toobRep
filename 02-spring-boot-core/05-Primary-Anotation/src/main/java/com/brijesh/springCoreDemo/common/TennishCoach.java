@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 @Primary
 public class TennishCoach implements Coach{
 
+    TennishCoach(){
+        System.out.println("Constructor:TennishCoach");
+    }
     @Override
     public String getCoach() {
         return "Practice cut";
