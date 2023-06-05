@@ -1,9 +1,9 @@
-package com.brijesh.springCoreDemo;
+package com.brijesh.springCoreDemo.common;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class CricketCoach implements Coach{
+public class CricketCoach implements Coach {
 
     @Override
     public String getCoach() {
