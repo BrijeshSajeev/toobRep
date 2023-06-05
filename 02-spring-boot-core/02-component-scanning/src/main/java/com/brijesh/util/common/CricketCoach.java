@@ -1,4 +1,4 @@
-package com.brijesh.springCoreDemo.common;
+package com.brijesh.util.common;
 
 import org.springframework.stereotype.Component;
 
