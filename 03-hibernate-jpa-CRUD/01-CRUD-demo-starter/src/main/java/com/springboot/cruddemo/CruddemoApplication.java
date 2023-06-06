@@ -18,9 +18,24 @@ public class CruddemoApplication {
 		public CommandLineRunner CommandLineRunner(StudentDAO studentDAO){
 			return runner->{
 			createStduentDao(studentDAO);
+			createMultipledao(studentDAO);
+
 			};
 
+
 		}
+
+	private void createMultipledao(StudentDAO studentDAO) {
+		//		Create Student object
+		Student std1=new Student("Sherbin","Silas","sherbin@gmail.com");
+		Student std2=new Student("Ashik","Jenly","ashik@gmail.com");
+		Student std3=new Student("Jhon","Snow","john@gmail.com");
+//		Save Student object
+		studentDAO.save(std1);
+		studentDAO.save(std2);
+		studentDAO.save(std3);
+
+	}
 
 	private void createStduentDao(StudentDAO studentDAO) {
 //		Create Student object
