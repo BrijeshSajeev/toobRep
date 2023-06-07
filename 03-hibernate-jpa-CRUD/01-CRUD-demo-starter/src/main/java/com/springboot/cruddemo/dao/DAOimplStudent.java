@@ -52,4 +52,11 @@ public class DAOimplStudent implements StudentDAO{
     public void updateFirstName(Student theStudent) {
         entityManager.merge(theStudent);
     }
+
+    @Override
+    @Transactional
+    public int updateAll() {
+        int numRowsUpdated= entityManager.createQuery("UPDATE Student SET lastName='Sajeev' where lastName='S A'").executeUpdate();
+        return numRowsUpdated;
+    }
 }

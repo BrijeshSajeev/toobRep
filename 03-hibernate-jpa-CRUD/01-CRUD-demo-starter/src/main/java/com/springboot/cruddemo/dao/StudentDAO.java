@@ -11,4 +11,6 @@ public interface StudentDAO {
 
     public void updateFirstName(Student theStudent);
 
+    public int updateAll();
+
 }

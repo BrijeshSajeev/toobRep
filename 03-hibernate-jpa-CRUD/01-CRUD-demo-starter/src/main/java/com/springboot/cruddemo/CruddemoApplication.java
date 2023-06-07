@@ -27,13 +27,20 @@ public class CruddemoApplication {
 //			queryForStudent(studentDAO);
 //			findStudent(studentDAO);
 
-				updateStd(studentDAO);
+//				updateStd(studentDAO);
 //			queryForStudent(studentDAO);
+
+				updateEntity(studentDAO);
 
 			};
 
 
 		}
+
+	private void updateEntity(StudentDAO studentDAO) {
+		int x=studentDAO.updateAll();
+		System.out.println(x+" number of rows updated");
+	}
 
 	private void updateStd(StudentDAO studentDAO) {
 
