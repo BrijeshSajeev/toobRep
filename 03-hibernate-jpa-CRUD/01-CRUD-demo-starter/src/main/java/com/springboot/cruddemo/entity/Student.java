@@ -71,7 +71,6 @@ public class Student {
 
     @Override
     public String toString() {
-        System.out.println("Hello world");
         return "ID : "+this.id+"\nName : "+this.firstName+" "+this.lastName+"\nEmail : "+this.email;
     }
 }
