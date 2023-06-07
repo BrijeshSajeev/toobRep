@@ -17,13 +17,21 @@ public class CruddemoApplication {
 		@Bean
 		public CommandLineRunner CommandLineRunner(StudentDAO studentDAO){
 			return runner->{
-			createStduentDao(studentDAO);
-			createMultipledao(studentDAO);
+//			createStduentDao(studentDAO);
+//			createMultipledao(studentDAO);
+				readStudent(studentDAO);
+
 
 			};
 
 
 		}
+
+	private void readStudent(StudentDAO studentDAO) {
+		Student std=studentDAO.findById(1);
+		System.out.println(std.toString());
+//		System.out.println(std.getFirstName());
+	}
 
 	private void createMultipledao(StudentDAO studentDAO) {
 		//		Create Student object
