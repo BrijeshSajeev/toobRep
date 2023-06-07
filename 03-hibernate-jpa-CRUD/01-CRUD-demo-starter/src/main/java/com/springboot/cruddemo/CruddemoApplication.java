@@ -25,14 +25,26 @@ public class CruddemoApplication {
 //				readStudent(studentDAO);
 //	Quering Objects
 //			queryForStudent(studentDAO);
-			findStudent(studentDAO);
+//			findStudent(studentDAO);
 
-
+				updateStd(studentDAO);
+//			queryForStudent(studentDAO);
 
 			};
 
 
 		}
+
+	private void updateStd(StudentDAO studentDAO) {
+
+		Student std=studentDAO.findById(3);
+		std.setFirstName("Ashik");
+		System.out.println(std);
+		studentDAO.updateFirstName(std);
+
+
+
+	}
 
 	private void findStudent(StudentDAO studentDAO) {
 

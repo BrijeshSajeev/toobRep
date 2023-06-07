@@ -46,4 +46,10 @@ public class DAOimplStudent implements StudentDAO{
         theQuery.setParameter("theData",LastName);
         return theQuery.getResultList();
     }
+
+    @Override
+    @Transactional
+    public void updateFirstName(Student theStudent) {
+        entityManager.merge(theStudent);
+    }
 }
