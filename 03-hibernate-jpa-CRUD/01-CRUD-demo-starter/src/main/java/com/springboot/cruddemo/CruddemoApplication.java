@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import  java.util.List;
 
+import static org.hibernate.internal.util.collections.ArrayHelper.forEach;
+
 @SpringBootApplication
 public class CruddemoApplication {
 
@@ -22,12 +24,25 @@ public class CruddemoApplication {
 //			createMultipledao(studentDAO);
 //				readStudent(studentDAO);
 //	Quering Objects
-			queryForStudent(studentDAO);
+//			queryForStudent(studentDAO);
+			findStudent(studentDAO);
+
+
 
 			};
 
 
 		}
+
+	private void findStudent(StudentDAO studentDAO) {
+
+		List<Student> stds=studentDAO.findByLastName("Sajeev");
+		for(Student std:stds){
+			System.out.println("----------------------");
+			System.out.println(std);
+		}
+
+	}
 
 	private void queryForStudent(StudentDAO studentDAO) {
 
@@ -61,7 +76,7 @@ public class CruddemoApplication {
 
 	private void createStduentDao(StudentDAO studentDAO) {
 //		Create Student object
-		Student std=new Student("Brijesh","Sajeev","brijeshnopzz@gmail.com");
+		Student std=new Student("Brishika","Sajeev","brishika@gmail.com");
 //		Save Student object
 		studentDAO.save(std);
 //		print
