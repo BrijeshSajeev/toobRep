@@ -30,12 +30,28 @@ public class CruddemoApplication {
 //				updateStd(studentDAO);
 //			queryForStudent(studentDAO);
 
-				updateEntity(studentDAO);
+//				updateEntity(studentDAO);
 
+//				queryDeleteStd(studentDAO);
+
+				queryDeleteAll(studentDAO);
 			};
 
 
 		}
+
+	private void queryDeleteAll(StudentDAO studentDAO) {
+
+		int x=studentDAO.deleteAll();
+		System.out.println(x+" Rows deleted");
+	}
+
+	private void queryDeleteStd(StudentDAO studentDAO) {
+
+//		Student std = studentDAO.findById(4);
+		studentDAO.deleteStd(4);
+//		System.out.println(std);
+	}
 
 	private void updateEntity(StudentDAO studentDAO) {
 		int x=studentDAO.updateAll();

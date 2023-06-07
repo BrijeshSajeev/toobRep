@@ -59,4 +59,21 @@ public class DAOimplStudent implements StudentDAO{
         int numRowsUpdated= entityManager.createQuery("UPDATE Student SET lastName='Sajeev' where lastName='S A'").executeUpdate();
         return numRowsUpdated;
     }
+
+    @Override
+    @Transactional
+    public void deleteStd(Integer id) {
+        Student Std=entityManager.find(Student.class,id);
+
+        entityManager.remove(Std);
+    }
+
+    @Override
+    @Transactional
+    public Integer deleteAll() {
+        int numRows=entityManager.createQuery("DELETE FROM Student").executeUpdate();
+        return numRows;
+    }
+
+
 }
