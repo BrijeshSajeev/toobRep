@@ -29,22 +29,13 @@ public class CustomerRestController {
     @GetMapping("/customers/{customerId}")
     public Customer getCustomer(@PathVariable int customerId){
         if(customerId >= li.size() || customerId< 0){
-            throw new CustomerNotFoundException("Customer Not Found");
+            throw new CustomerNotFoundException("Customer Not Found " +customerId);
         }
 
         return li.get(customerId);
     }
 
 
-    @ExceptionHandler
-    public ResponseEntity<CustomerErrorResponse> handler(CustomerNotFoundException exe){
-        CustomerErrorResponse errRes=new CustomerErrorResponse();
-        errRes.setMessage(exe.getMessage());
-        errRes.setStatus(HttpStatus.NOT_FOUND.value());
-        errRes.setTimeStamp(System.currentTimeMillis());
-
-        return new ResponseEntity<>(errRes,HttpStatus.NOT_FOUND);
-    }
 
 
 }
