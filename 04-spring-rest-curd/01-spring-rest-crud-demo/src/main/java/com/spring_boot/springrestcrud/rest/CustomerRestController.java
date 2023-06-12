@@ -2,6 +2,8 @@ package com.spring_boot.springrestcrud.rest;
 
 import com.spring_boot.springrestcrud.entity.Customer;
 import jakarta.annotation.PostConstruct;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -26,7 +28,22 @@ public class CustomerRestController {
 
     @GetMapping("/customers/{customerId}")
     public Customer getCustomer(@PathVariable int customerId){
+        if(customerId >= li.size() || customerId< 0){
+            throw new CustomerNotFoundException("Customer Not Found");
+        }
+
         return li.get(customerId);
+    }
+
+
+    @ExceptionHandler
+    public ResponseEntity<CustomerErrorResponse> handler(CustomerNotFoundException exe){
+        CustomerErrorResponse errRes=new CustomerErrorResponse();
+        errRes.setMessage(exe.getMessage());
+        errRes.setStatus(HttpStatus.NOT_FOUND.value());
+        errRes.setTimeStamp(System.currentTimeMillis());
+
+        return new ResponseEntity<>(errRes,HttpStatus.NOT_FOUND);
     }
 
 
