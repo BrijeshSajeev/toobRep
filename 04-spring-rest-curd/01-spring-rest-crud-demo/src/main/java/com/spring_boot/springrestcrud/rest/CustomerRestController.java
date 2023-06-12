@@ -1,9 +1,8 @@
 package com.spring_boot.springrestcrud.rest;
 
 import com.spring_boot.springrestcrud.entity.Customer;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.annotation.PostConstruct;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,17 +10,24 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class CustomerRestController {
+    private List<Customer> li= new ArrayList<Customer>();
 
-    @GetMapping("/customers")
-    public List<Customer> getCustomer(){
-        List<Customer> li= new ArrayList<Customer>();
+    @PostConstruct
+    private void loadCustomer(){
         li.add(new Customer("Brijesh","Sajeev","brijesh@gmail.com"));
         li.add(new Customer("Sherbin","Silas","serbin@gmail.com"));
         li.add(new Customer("Ashik","Jenly","ashik@gmail.com"));
-
-        return li;
-
-
-
     }
+
+    @GetMapping("/customers")
+    public List<Customer> getCustomers(){
+        return li;
+    }
+
+    @GetMapping("/customers/{customerId}")
+    public Customer getCustomer(@PathVariable int customerId){
+        return li.get(customerId);
+    }
+
+
 }
