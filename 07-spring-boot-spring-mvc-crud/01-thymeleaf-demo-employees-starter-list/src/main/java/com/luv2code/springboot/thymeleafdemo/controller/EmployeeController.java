@@ -6,6 +6,8 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
@@ -31,8 +33,24 @@ public class EmployeeController {
 		// add to the spring model
 		theModel.addAttribute("employees", theEmployees);
 
-		return "list-employees";
+		return "employee/list-employees";
 	}
+
+	@GetMapping("/showFormToAdd")
+	public String showFormToAdd(Model theModel){
+		Employee thEmp=new Employee();
+		theModel.addAttribute("employee",thEmp);
+		return "employee/save-employee";
+	}
+
+	@PostMapping("/save")
+	public String save(@ModelAttribute("employee") Employee theEmp){
+		employeeService.save(theEmp);
+
+//		Redirecting to the site to avoid duplicate Submition
+		return "redirect:/employees/list";
+	}
+
 }
 
 
