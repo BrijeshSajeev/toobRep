@@ -39,8 +39,14 @@
 					<a class="btn btn-info btn-sm"
 					th:href="@{/employees/showFormToUpdate(employeeId=${tempEmployee.id})}"
 					>Update</a>
+					<a class="btn btn-danger btn-info btn-sm"
+					   th:href="@{/employees/delete(employeeId=${tempEmployee.id})}"
+					   onclick="if(!(confirm('Are You Sure?'))) return false "
+					>
+						Delete
+					</a>
 				</td>
-				
+
 			</tr>
 		</tbody>		
 	</table>
