@@ -1,17 +1,44 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <title>MVC Demo</title>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    .centered {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+
+
 </head>
-
 <body>
-    <h2>Hello World</h2>
-    <p>
-        Hi, Friends how are you..
-    </p>
+    <div class="container">
 
-    <form action="#" th:action="@{/logout}" method="POST">
-        <input type="submit" value="Logout">
-    </form>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 centered">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="text-center">User Information</h3>
+                           <p> User : <span sec:authentication="principal.username"></span></p>
+                            <p>
+                                Role : <span sec:authentication="principal.authorities"></span>
+                            </p>
+                            <form action="#" th:action="@{/logout}" method="POST">
+                                <input type="submit" class="btn btn-primary btn-md" value="Logout">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 </body>
 </html>
