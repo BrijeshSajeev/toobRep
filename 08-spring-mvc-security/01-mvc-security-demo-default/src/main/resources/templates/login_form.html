@@ -6,9 +6,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<div class="container">
-    <h1>Login</h1>
+<div class="container mt-50">
+    <h3>Login</h3>
     <form action="#" th:action="@{/authenticateTheUser}" method="post">
+
+        <div class="alert alert-danger mb-10" th:if="${param.error}">
+            <i>Error occurred</i>
+        </div>
+
         <div class="form-group">
             <label for="username">UserName:</label>
             <input type="text" id="username" name="username" required>
