@@ -1,28 +1,36 @@
-CREATE DATABASE  IF NOT EXISTS `employee_directory`;
-USE `employee_directory`;
+CREATE DATABASE  IF NOT EXISTS `customer_directory`;
+USE `customer_directory`;
 
 --
 -- Table structure for table `employee`
 --
 
-DROP TABLE IF EXISTS `employee`;
+DROP TABLE IF EXISTS `customer`;
 
-CREATE TABLE `employee` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(45) DEFAULT NULL,
-  `last_name` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+CREATE TABLE customer (
+  id INT PRIMARY KEY,
+  first_name VARCHAR(50),
+  last_name VARCHAR(50),
+  email VARCHAR(100),
+  balance DECIMAL(10,2)
+);
 
 --
 -- Data for table `employee`
 --
-
-INSERT INTO `employee` VALUES 
-	(1,'Leslie','Andrews','leslie@luv2code.com'),
-	(2,'Emma','Baumgarten','emma@luv2code.com'),
-	(3,'Avani','Gupta','avani@luv2code.com'),
-	(4,'Yuri','Petrov','yuri@luv2code.com'),
+INSERT INTO customer (id, first_name, last_name, email, balance)
+VALUES
+  (1, 'John', 'Smith', 'john.smith@example.com', 1000.00),
+  (2, 'Emma', 'Johnson', 'emma.johnson@example.com', 1500.00),
+  (3, 'Michael', 'Williams', 'michael.williams@example.com', 2000.00),
+  (4, 'Sophia', 'Brown', 'sophia.brown@example.com', 1200.50),
+  (5, 'Daniel', 'Davis', 'daniel.davis@example.com', 3000.00),
+  (6, 'Olivia', 'Miller', 'olivia.miller@example.com', 1800.75),
+  (7, 'James', 'Anderson', 'james.anderson@example.com', 2500.25),
+  (8, 'Ava', 'Martinez', 'ava.martinez@example.com', 1400.50),
+  (9, 'William', 'Harris', 'william.harris@example.com', 3200.00),
+  (10, 'Isabella', 'Garcia', 'isabella.garcia@example.com', 2100.25),
+  (11, 'Liam', 'Rodriguez', 'liam.rodriguez@example.com', 1750.00),
+  (12, 'Mia', 'Lopez', 'mia.lopez@example.com', 2800.75);
 	(5,'Juan','Vega','juan@luv2code.com');
 
