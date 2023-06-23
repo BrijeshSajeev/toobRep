@@ -46,7 +46,8 @@ public class CustomConfig {
                                 .loginPage("/showLoginPage")
                                 .loginProcessingUrl("/authenticateTheUser")
                                 .permitAll()
-                        );
+                        )
+                .logout(logout -> logout.permitAll());
         return http.build();
 
     }
