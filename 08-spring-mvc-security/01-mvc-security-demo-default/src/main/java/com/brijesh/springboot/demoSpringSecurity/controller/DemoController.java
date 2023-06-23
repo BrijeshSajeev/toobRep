@@ -11,4 +11,12 @@ public class DemoController {
         return "hello";
     }
 
+    @GetMapping("/leaders")
+    public String viewLeaderPage(){
+        return "leader";
+    }
+    @GetMapping("/systems")
+    public String viewSystemPage(){
+        return "system";
+    }
 }

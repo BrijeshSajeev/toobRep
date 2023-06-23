@@ -38,7 +38,14 @@ public class CustomConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 
         http.authorizeHttpRequests(configure->
-                configure.anyRequest()
+
+
+
+                configure
+                        .requestMatchers("/").hasRole("EMPLOYEE")
+                        .requestMatchers("/leaders").hasAnyRole("MANAGER","CEO")
+                        .requestMatchers("/systems").hasAnyRole("ADMIN","CEO")
+                        .anyRequest()
                         .authenticated()
                 )
                 .formLogin(form->
@@ -48,6 +55,11 @@ public class CustomConfig {
                                 .permitAll()
                         )
                 .logout(logout -> logout.permitAll());
+
+
+
+
+
         return http.build();
 
     }
