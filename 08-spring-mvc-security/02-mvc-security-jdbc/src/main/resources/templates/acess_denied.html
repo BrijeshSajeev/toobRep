@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+
+    .container{
+     display: flex;
+      justify-content: center;
+      align-items: center;
+      width:100%;
+    }
+    .custom{
+        width:70%;
+        margin-inline:auto;
+        margin-top:8.2rem;
+    }
+
+  </style>
+
+
+</head>
+<body>
+
+<div class="container">
+    <div class="custom">
+        <div class="alert alert-Danger" role="alert">
+            <h4 class="alert-heading">Access Denied!</h4>
+            <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+            <hr>
+            <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+            <a th:href="@{/}">Go Back</a>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

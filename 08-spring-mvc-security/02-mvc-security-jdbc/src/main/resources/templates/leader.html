@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+
+    .container{
+     display: flex;
+      justify-content: center;
+      align-items: center;
+      width:100%;
+    }
+    .custom{
+        margin-top:8.4rem;
+    }
+
+  </style>
+
+
+</head>
+<body>
+
+
+<div class="card text-center">
+    <div class="card-header">
+        Featured
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Welcome Manager</h5>
+        <p class="card-text">You have official trip to canada</p>
+        <a th:href="@{/}" class="btn btn-primary">Go Back</a>
+    </div>
+    <div class="card-footer text-muted">
+        2 days ago
+    </div>
+</div>
+
+</body>
+</html>
