@@ -6,33 +6,46 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+
+import javax.sql.DataSource;
 
 @Configuration
 public class CustomConfig {
 
+//    @Bean
+//    public InMemoryUserDetailsManager inMemoryUserDetailsManager(){
+//        UserDetails brijesh= User.builder()
+//                .username("brijesh")
+//                .password("{noop}test123")
+//                .roles("CEO","EMPLOYEE")
+//                .build();
+//        UserDetails sherbin= User.builder()
+//                .username("sherbin")
+//                .password("{noop}test123")
+//                .roles("MANAGER","EMPLOYEE")
+//                .build();
+//
+//        UserDetails jenly= User.builder()
+//                .username("jenly")
+//                .password("{noop}test123")
+//                .roles("ADMIN","EMPLOYEE")
+//                .build();
+//
+//        return new InMemoryUserDetailsManager(brijesh,sherbin,jenly);
+//
+//    }
+
+//    User details from the database
+
     @Bean
-    public InMemoryUserDetailsManager inMemoryUserDetailsManager(){
-        UserDetails brijesh= User.builder()
-                .username("brijesh")
-                .password("{noop}test123")
-                .roles("CEO","EMPLOYEE")
-                .build();
-        UserDetails sherbin= User.builder()
-                .username("sherbin")
-                .password("{noop}test123")
-                .roles("MANAGER","EMPLOYEE")
-                .build();
-
-        UserDetails jenly= User.builder()
-                .username("jenly")
-                .password("{noop}test123")
-                .roles("ADMIN","EMPLOYEE")
-                .build();
-
-        return new InMemoryUserDetailsManager(brijesh,sherbin,jenly);
-
+    public UserDetailsManager userDetailsManager(DataSource dataSource){
+        return new JdbcUserDetailsManager(dataSource);
     }
+
+
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
