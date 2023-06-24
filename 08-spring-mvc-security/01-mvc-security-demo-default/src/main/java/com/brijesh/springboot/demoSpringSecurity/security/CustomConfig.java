@@ -48,13 +48,20 @@ public class CustomConfig {
                         .anyRequest()
                         .authenticated()
                 )
+                .exceptionHandling(configurer->
+                        configurer
+                                .accessDeniedPage("/accessDenied")
+                        )
+
+
                 .formLogin(form->
                         form
                                 .loginPage("/showLoginPage")
                                 .loginProcessingUrl("/authenticateTheUser")
                                 .permitAll()
                         )
-                .logout(logout -> logout.permitAll());
+                .logout(logout -> logout.permitAll()
+                );
 
 
 

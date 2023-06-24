@@ -19,4 +19,10 @@ public class DemoController {
     public String viewSystemPage(){
         return "system";
     }
+
+    @GetMapping("/accessDenied")
+    public String accessDeniedMsg(){
+        return "acess_denied";
+    }
+
 }
