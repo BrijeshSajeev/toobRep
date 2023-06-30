@@ -27,5 +27,11 @@ public class AppDaoImpl implements AppDao{
         return theIns;
     }
 
+    @Override
+    public void deleteInstructorById(int theId) {
+        Instructor theIns =entityManager.find(Instructor.class,theId);
+        entityManager.remove(theIns);
+    }
+
 
 }
