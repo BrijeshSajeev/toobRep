@@ -49,6 +49,9 @@ public class InstructorDetail {
     }
 
 
+    public InstructorDetail() {
+    }
+
     @Override
     public String toString() {
         return "InstructorDetail{" +
