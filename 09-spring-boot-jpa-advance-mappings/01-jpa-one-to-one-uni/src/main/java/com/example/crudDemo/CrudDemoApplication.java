@@ -22,9 +22,17 @@ public class CrudDemoApplication {
 //			findByIdIns(appDao);
 
 //			deleteByIdIns(appDao);
-			findInsDetailById(appDao);
+//			findInsDetailById(appDao);
 
+			deleteByIdInsDetail(appDao);
 		};
+	}
+
+	private void deleteByIdInsDetail(AppDao appDao) {
+
+		appDao.deleteInstructorDetailById(3);
+		System.out.println("SucessFull");
+
 	}
 
 	private void findInsDetailById(AppDao appDao) {

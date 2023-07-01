@@ -11,5 +11,7 @@ public interface AppDao {
 
     public void deleteInstructorById(int theId);
 
+    public void deleteInstructorDetailById(int theId);
+
 
 }
