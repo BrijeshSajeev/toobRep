@@ -1,7 +1,7 @@
 package com.example.crudDemo.dao;
 
 import com.example.crudDemo.entity.Instructor;
-import jakarta.persistence.Entity;
+import com.example.crudDemo.entity.InstructorDetail;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +27,17 @@ public class AppDaoImpl implements AppDao{
         return theIns;
     }
 
+
     @Override
+    @Transactional
     public void deleteInstructorById(int theId) {
         Instructor theIns =entityManager.find(Instructor.class,theId);
         entityManager.remove(theIns);
+    }
+    @Override
+    public InstructorDetail findInstructorDetailById(int theId) {
+
+        return entityManager.find(InstructorDetail.class,theId);
     }
 
 

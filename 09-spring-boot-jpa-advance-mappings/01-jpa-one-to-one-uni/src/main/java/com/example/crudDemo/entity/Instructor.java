@@ -79,8 +79,7 @@ public class Instructor
     @Override
     public String toString() {
         return "Instructor{" +
-                "instructorDetail=" + instructorDetail +
-                ", id=" + id +
+                "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +

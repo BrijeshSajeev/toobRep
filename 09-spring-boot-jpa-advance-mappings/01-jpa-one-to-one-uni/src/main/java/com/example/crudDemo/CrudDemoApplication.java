@@ -21,13 +21,23 @@ public class CrudDemoApplication {
 //			saveInstructor(appDao);
 //			findByIdIns(appDao);
 
-			deleteByIdIns(appDao);
-			
+//			deleteByIdIns(appDao);
+			findInsDetailById(appDao);
 
 		};
 	}
 
+	private void findInsDetailById(AppDao appDao) {
+		InstructorDetail insDet=appDao.findInstructorDetailById(3);
+		System.out.println(insDet);
+		Instructor ins=insDet.getInstructor();
+		System.out.println(ins);
+	}
+
 	private void deleteByIdIns(AppDao appDao) {
+		int id =2;
+		 appDao.deleteInstructorById(id);
+		System.out.println("Deleted Successfully");
 	}
 
 	private void findByIdIns(AppDao appDao) {
@@ -41,9 +51,9 @@ public class CrudDemoApplication {
 
 	private void saveInstructor(AppDao appDao) {
 
-		Instructor theIns=new Instructor("Brijesh","Sajeev","brijesh@gmail.com");
+		Instructor theIns=new Instructor("Brijesh2","Sajeev","brijesh2@gmail.com");
 
-		InstructorDetail newInsDet=new InstructorDetail("you@brijesh.com","Programming");
+		InstructorDetail newInsDet=new InstructorDetail("you@brijesh2.com","Programming");
 		theIns.setInstructorDetail(newInsDet);
 
 		appDao.save(theIns);
