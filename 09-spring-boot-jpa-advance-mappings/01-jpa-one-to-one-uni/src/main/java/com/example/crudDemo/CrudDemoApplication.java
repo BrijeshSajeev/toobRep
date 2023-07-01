@@ -23,9 +23,20 @@ public class CrudDemoApplication {
 
 //			deleteByIdIns(appDao);
 //			findInsDetailById(appDao);
-
-			deleteByIdInsDetail(appDao);
+			saveInstructorDetail(appDao);
+//			deleteByIdInsDetail(appDao);
 		};
+	}
+
+	private void saveInstructorDetail(AppDao appDao) {
+
+		Instructor theIns=new Instructor("Brijesh2","Sajeev","brijesh2@gmail.com");
+
+		InstructorDetail newInsDet=new InstructorDetail("you@brijesh2.com","Programming");
+
+		newInsDet.setInstructor(theIns);
+		appDao.saveByInsDetail(newInsDet);
+
 	}
 
 	private void deleteByIdInsDetail(AppDao appDao) {
