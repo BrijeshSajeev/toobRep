@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class CrudDemoApplication {
 
@@ -36,6 +38,8 @@ public class CrudDemoApplication {
 	private void findCoursesByInstructor(AppDao appDao) {
 			Instructor theIns=appDao.findInstructorById(1);
 		System.out.println(theIns);
+		   List<Course> newCourse= appDao.findCourseByInstructorId(1);
+		   theIns.setCourses(newCourse);
 		System.out.println(theIns.getCourses());
 
 

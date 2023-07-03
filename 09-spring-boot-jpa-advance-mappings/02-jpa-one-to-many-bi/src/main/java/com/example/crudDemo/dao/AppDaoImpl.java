@@ -1,11 +1,15 @@
 package com.example.crudDemo.dao;
 
+import com.example.crudDemo.entity.Course;
 import com.example.crudDemo.entity.Instructor;
 import com.example.crudDemo.entity.InstructorDetail;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class AppDaoImpl implements AppDao{
@@ -46,6 +50,15 @@ public class AppDaoImpl implements AppDao{
     public void deleteInstructorDetailById(int theId) {
         InstructorDetail theInsDet=entityManager.find(InstructorDetail.class,theId);
         entityManager.remove(theInsDet);
+    }
+
+    @Override
+    public List<Course> findCourseByInstructorId(int theId) {
+        TypedQuery<Course> theQuery= entityManager.createQuery("from Course where instructor.id =:data",Course.class);
+        theQuery.setParameter("data",theId);
+        List<Course> newCourses=theQuery.getResultList();
+
+        return newCourses;
     }
 
     @Override
