@@ -76,6 +76,12 @@ public class AppDaoImpl implements AppDao{
     }
 
     @Override
+    @Transactional
+    public void update(Instructor theIns) {
+        entityManager.merge(theIns);
+    }
+
+    @Override
     public InstructorDetail findInstructorDetailById(int theId) {
 
         return entityManager.find(InstructorDetail.class,theId);

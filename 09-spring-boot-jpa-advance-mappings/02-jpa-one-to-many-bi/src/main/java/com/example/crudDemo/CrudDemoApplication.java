@@ -33,11 +33,30 @@ public class CrudDemoApplication {
 
 //			findCoursesByInstructor(appDao);
 
-		findCoursesByInstructorJoinFetch(appDao);
+//		findCoursesByInstructorJoinFetch(appDao);
 
+			updateInstructor(appDao);
 		};
 
 
+
+	}
+
+	private void updateInstructor(AppDao appDao) {
+
+		Instructor theIns=appDao.findCourseByInstructorJoinFetch(1);
+
+
+		Course crs1= new Course("Nano Tech");
+		crs1.setInstructor(theIns);
+		List<Course> newCourse=theIns.getCourses();
+		newCourse.add(crs1);
+		theIns.setCourses(newCourse);
+
+		appDao.update(theIns);
+		System.out.println("Done!");
+
+				findCoursesByInstructorJoinFetch(appDao);
 
 	}
 
@@ -60,12 +79,12 @@ public class CrudDemoApplication {
 	}
 
 	private void createInstructorWithCourse(AppDao appDao) {
-		Instructor theIns=new Instructor("Brijesh","Sajeev","brijesh@gmail.com");
+		Instructor theIns=new Instructor("Sherbin","sailas","sherbin@gmail.com");
 
-		InstructorDetail newInsDet=new InstructorDetail("you@brijesh2.com","Programming");
+		InstructorDetail newInsDet=new InstructorDetail("you@sherbin.com","Programming");
 		theIns.setInstructorDetail(newInsDet);
-		Course newCourse1=new Course("Java");
-		Course newCourse2=new Course("Python");
+		Course newCourse1=new Course("JS");
+		Course newCourse2=new Course("C");
 
 		theIns.add(newCourse1);
 		theIns.add(newCourse2);
