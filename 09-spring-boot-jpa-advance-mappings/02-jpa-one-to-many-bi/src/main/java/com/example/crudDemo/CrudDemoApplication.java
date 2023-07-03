@@ -35,11 +35,20 @@ public class CrudDemoApplication {
 
 //		findCoursesByInstructorJoinFetch(appDao);
 
-			updateInstructor(appDao);
+//			updateInstructor(appDao);
+
+		deleteTheCourse(appDao);
+
 		};
 
 
 
+	}
+
+	private void deleteTheCourse(AppDao appDao) {
+
+//		appDao.deleteCourseById(12);
+		appDao.deleteCourseById(13);
 	}
 
 	private void updateInstructor(AppDao appDao) {
@@ -122,7 +131,7 @@ public class CrudDemoApplication {
 	}
 
 	private void deleteByIdIns(AppDao appDao) {
-		int id =2;
+		int id =3;
 		 appDao.deleteInstructorById(id);
 		System.out.println("Deleted Successfully");
 	}
