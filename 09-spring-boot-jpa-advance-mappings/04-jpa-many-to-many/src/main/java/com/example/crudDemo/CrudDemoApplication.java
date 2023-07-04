@@ -1,10 +1,7 @@
 package com.example.crudDemo;
 
 import com.example.crudDemo.dao.AppDao;
-import com.example.crudDemo.entity.Course;
-import com.example.crudDemo.entity.Instructor;
-import com.example.crudDemo.entity.InstructorDetail;
-import com.example.crudDemo.entity.Review;
+import com.example.crudDemo.entity.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,14 +19,69 @@ public class CrudDemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDao appDao){
 		return runner->{
-//			saveCourseAndReviews(appDao);
 
-//			findCourseByCourseId(appDao);
-//			deleteTheCourseAndReview(appDao);
+		deleteTheStudent(appDao);
 
 		};
 
 	}
+
+	private void deleteTheStudent(AppDao appDao) {
+		appDao.deleteStudent(1);
+	}
+
+
+	private void addMoreCourseToStudent(AppDao appDao) {
+		Student std=appDao.findStudentByStudentId(1);
+		std.addCourse(new Course("data structures"));
+		std.addCourse(new Course("Spring"));
+		std.addCourse(new Course("Communication"));
+		System.out.println(std);
+		System.out.println(std.getCourses());
+		appDao.addMoreCourseToStudent(std);
+	}
+
+	private void findStudentByCourseId(AppDao appDao) {
+
+		Course theC=appDao.findStudentByCourseId(10);
+		System.out.println(theC);
+		System.out.println(theC.getStudents());
+	}
+
+	private void findStudentByStudentId(AppDao appDao) {
+	   Student std=appDao.findStudentByStudentId(1);
+		System.out.println(std);
+		System.out.println(std.getCourses());
+
+	}
+
+	private void addCourse(AppDao appDao) {
+		Course theCourse= new Course("C++");
+		theCourse.addStudent(new Student("Sherbin","Sailas","Sherbin@gmail.com"));
+		theCourse.addStudent(new Student("Brijesh","Sajeev","brijesh@gmail.com"));
+
+		appDao.addCourseWithStd(theCourse);
+
+	}
+
+	//--------------------------ManyToMany
+	private void addStudentAndCourse(AppDao appDao) {
+		Student std=new Student("Sherbin","Sailas","Sherbin@gmail.com");
+		std.addCourse(new Course("Java"));
+		std.addCourse(new Course("Python"));
+		std.addCourse(new Course("C++"));
+
+		appDao.addStudent(std);
+
+
+
+	}
+
+
+
+
+//---------------------------ManyToOne
+
 
 	private void deleteTheCourseAndReview(AppDao appDao) {
 		appDao.deleteCourseById(10);

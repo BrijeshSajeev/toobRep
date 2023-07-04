@@ -3,6 +3,7 @@ package com.example.crudDemo.dao;
 import com.example.crudDemo.entity.Course;
 import com.example.crudDemo.entity.Instructor;
 import com.example.crudDemo.entity.InstructorDetail;
+import com.example.crudDemo.entity.Student;
 
 import java.util.List;
 
@@ -31,5 +32,20 @@ public interface AppDao {
 
     Course getCourseByCourseId(int theId);
     Course getCourseByCourseIdJoinFetch(int theId);
+
+//    ManyToMany
+
+    void addStudent(Student std);
+
+    void addCourseWithStd(Course theCourse);
+
+    Course findStudentByCourseId(int theId);
+
+    Student findStudentByStudentId(int theId);
+
+    void addMoreCourseToStudent(Student theStd);
+
+    void deleteStudent(int theId);
+
 
 }

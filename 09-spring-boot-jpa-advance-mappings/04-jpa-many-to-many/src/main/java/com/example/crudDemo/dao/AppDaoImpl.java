@@ -3,6 +3,7 @@ package com.example.crudDemo.dao;
 import com.example.crudDemo.entity.Course;
 import com.example.crudDemo.entity.Instructor;
 import com.example.crudDemo.entity.InstructorDetail;
+import com.example.crudDemo.entity.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
@@ -113,17 +114,63 @@ public class AppDaoImpl implements AppDao{
                         +"JOIN FETCH c.reviews "+"where c.id=:data", Course.class
                     );
         theQuery.setParameter("data",theId);
+        return theQuery.getSingleResult();
+    }
 
 
+    @Override
+    public InstructorDetail findInstructorDetailById(int theId) {
+
+        return entityManager.find(InstructorDetail.class,theId);
+    }
+
+
+    @Override
+    @Transactional
+    public void addStudent(Student std) {
+        entityManager.persist(std);
+    }
+
+    @Override
+    @Transactional
+    public void addCourseWithStd(Course theCourse) {
+        entityManager.persist(theCourse);
+    }
+
+    @Override
+    public Course findStudentByCourseId(int theId) {
+
+        TypedQuery<Course> theQuery=entityManager.createQuery("select c from Course c "
+                    +"JOIN FETCH c.students "
+                +"where c.id=:data",Course.class);
+        theQuery.setParameter("data",theId);
 
 
         return theQuery.getSingleResult();
     }
 
     @Override
-    public InstructorDetail findInstructorDetailById(int theId) {
+    public Student findStudentByStudentId(int theId) {
 
-        return entityManager.find(InstructorDetail.class,theId);
+        TypedQuery<Student> theQuery=entityManager.createQuery("select s from Student s "
+                    +"Join FETCH s.courses "
+                +"where s.id=:data", Student.class);
+
+        theQuery.setParameter("data",theId);
+        return theQuery.getSingleResult();
+    }
+
+    @Override
+    @Transactional
+    public void addMoreCourseToStudent(Student theStd) {
+        entityManager.merge(theStd);
+    }
+
+    @Override
+    @Transactional
+    public void deleteStudent(int theId) {
+        Student std=entityManager.find(Student.class,theId);
+        entityManager.remove(std);
     }
 
 
