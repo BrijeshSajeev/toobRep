@@ -27,5 +27,9 @@ public interface AppDao {
 
     void deleteCourseById(int theId);
 
+    void addCourseAndReview(Course theCourse);
+
+    Course getCourseByCourseId(int theId);
+    Course getCourseByCourseIdJoinFetch(int theId);
 
 }

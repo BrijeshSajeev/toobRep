@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class AppDaoImpl implements AppDao{
@@ -91,6 +92,32 @@ public class AppDaoImpl implements AppDao{
     public void deleteCourseById(int theId) {
         Course theCourse=entityManager.find(Course.class,theId);
         entityManager.remove(theCourse);
+    }
+
+    @Override
+    @Transactional
+    public void addCourseAndReview(Course theCourse) {
+        entityManager.persist(theCourse);
+    }
+
+    @Override
+    public Course getCourseByCourseId(int theId) {
+        Course result= entityManager.find(Course.class,theId);
+
+        return result;
+    }
+
+    @Override
+    public Course getCourseByCourseIdJoinFetch(int theId) {
+        TypedQuery<Course> theQuery=entityManager.createQuery("select c from Course c "
+                        +"JOIN FETCH c.reviews "+"where c.id=:data", Course.class
+                    );
+        theQuery.setParameter("data",theId);
+
+
+
+
+        return theQuery.getSingleResult();
     }
 
     @Override

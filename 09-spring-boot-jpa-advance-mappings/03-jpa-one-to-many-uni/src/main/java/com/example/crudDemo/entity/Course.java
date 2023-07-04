@@ -3,6 +3,9 @@ package com.example.crudDemo.entity;
 import jakarta.persistence.*;
 import org.hibernate.engine.internal.Cascade;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "course")
 public class Course {
@@ -48,6 +51,27 @@ public class Course {
 
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
+    }
+
+//    Review - Relation
+    @OneToMany(cascade =CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id")
+    private List<Review> reviews;
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public void add(Review theReview){
+        if(reviews==null){
+            reviews =new ArrayList<>();
+        }
+
+        reviews.add(theReview);
     }
 
 
